@@ -7,6 +7,7 @@ const Demo = () => {
     return (
         <div >
             <h1 >Welcome to the Demo Page</h1>
+            <button onClick={() => router.push('./home')}>Home</button>
         </div>
     );
 };
