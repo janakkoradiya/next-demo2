@@ -1,6 +1,5 @@
 import styles from './../../styles/home.module.css';
 // import styles from '../styles/home.module.css';
-// import Footer from '@/components/footer';
 import { useRouter } from "next/router";
 
 const Home = () => {

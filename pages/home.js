@@ -1,7 +1,5 @@
-import Header from '@/components/header';
 import styles from './../styles/home.module.css';
 import ProtectedRoute from './protectedRoute';
-// import Footer from '@/components/footer';
 
 const Home = () => {
     return (
