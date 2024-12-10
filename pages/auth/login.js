@@ -14,6 +14,7 @@ export default function Login() {
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Login</h1>
+      <h1>Janak Koradiya</h1>
       <button onClick={handleLogin}>Login</button>
       <button onClick={() => router.push('./registration')}>Registration</button>
     </div>
