@@ -1,0 +1,9 @@
+.container {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .heading {
+    color: green;
+    font-size: 1.8rem;
+  }
