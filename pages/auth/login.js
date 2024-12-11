@@ -51,7 +51,7 @@ const LogIn = () => {
           }
           document.cookie = `userData=${encodeURIComponent(JSON.stringify(userData))}; path=/;`;
           router.push('./../home')
-          setFormData(initialState);
+          setFormData({ email: "", password: "" });
           toast.success("Login successfully")
         }
       } catch (error) {
