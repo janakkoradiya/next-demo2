@@ -190,6 +190,7 @@ const LogIn = () => {
                 Login
               </button>
             </div>
+          </form>
 
             <div className="mt-4 text-center">
               <p className="text-sm text-gray-800">
@@ -202,7 +203,6 @@ const LogIn = () => {
                 </button>
               </p>
             </div>
-          </form>
         </div>
       </div>
     </div>

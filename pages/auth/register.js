@@ -35,6 +35,14 @@ const SignUp = () => {
     else if (formData.password.length < 6)
       newErrors.password = "Password must be at least 6 characters";
 
+    if (!formData.confirmPassword) newErrors.confirmPassword = "Confirm Password is required";
+    else if (formData.confirmPassword.length < 6)
+      newErrors.confirmPassword = "Confirm Password must be at least 6 characters";
+
+    if (formData.password && formData.confirmPassword && formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "Passwords do not match";
+    }
+
     return newErrors;
   };
 
@@ -219,16 +227,19 @@ const SignUp = () => {
                 Sign Up
               </button>
             </div>
+          </form>
 
             <div className="mt-4 text-center">
               <p className="text-sm text-gray-800">
                 Already have an account?{" "}
-                <a href="/auth/login" className="text-primary hover:underline">
+                <button 
+                href="/auth/login" 
+                className="text-primary hover:underline"
+                onClick={() => { router.push('./login')}}>
                   Login
-                </a>
+                </button>
               </p>
             </div>
-          </form>
         </div>
       </div>
     </div>
