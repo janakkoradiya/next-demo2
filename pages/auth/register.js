@@ -207,7 +207,7 @@ const SignUp = () => {
               <div className="relative flex items-center">
                 <input
                   name="confirmPassword"
-                  type="confirmPassword"
+                  type="password"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
                   className="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-md outline-primary"
