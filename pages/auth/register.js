@@ -1,17 +1,21 @@
 "use client";
 
-import { LOGIN_API } from "@/src/api/authAPI";
+import { SIGNUP_API } from "@/src/api/authAPI";
 import useAxios from "@/src/network/useAxios";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { useRouter } from "next/router";
 import { toast } from 'react-toastify';
 import { useGoogleLogin } from "@react-oauth/google";
-import { useRouter } from "next/router";
 
-const LogIn = () => {
+const SignUp = () => {
   const router = useRouter();
   const axiosCreate = useAxios();
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
@@ -22,7 +26,8 @@ const LogIn = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.email) newErrors.email = "email is required";
+    if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.email) newErrors.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       newErrors.email = "Email is invalid";
 
@@ -41,22 +46,19 @@ const LogIn = () => {
     } else {
       console.log("Form Data:", formData);
       try {
-        const res = await axiosCreate.post(LOGIN_API, formData);
-        console.log("res ---- " + JSON.stringify(res))
-        if (res.status === 200 || res.status === 304) {
-          let userData = {
-            email: res?.data?.user?.email,
-            user_name: res?.data?.user?.username,
-            access_token: res?.data?.tokens?.access,
-          }
-          document.cookie = `userData=${encodeURIComponent(JSON.stringify(userData))}; path=/;`;
-          router.push('./../home')
-          setFormData(initialState);
-          toast.success("Login successfully")
+        let data = {
+          email: formData?.email,
+          username: formData?.name,
+          password: formData?.password,
+          confirm_password: formData?.confirmPassword
         }
+        const res = await axiosCreate.post(SIGNUP_API, data);
+        console.log("res ---- " + JSON.stringify(res))
+        router.push('./login')
+        toast.success("Registration successfully")
       } catch (error) {
-        console.error("Error message:", error.message);
-        toast.error("Something went wrong, please try again.");
+        console.error("Error during Registration: ", error);
+        toast.error("Something went wrong, please try again.")
       }
     }
   };
@@ -73,11 +75,11 @@ const LogIn = () => {
             },
           }
         );
-
         if (!userInfoResponse.ok) {
           console.error(`Failed to fetch user info: ${userInfoResponse.statusText}`);
           toast.error("Something went wrong, please try again.");
         }
+
         const userInfo = await userInfoResponse.json();
 
         console.log("User Info:", userInfo);
@@ -88,14 +90,14 @@ const LogIn = () => {
         }
         document.cookie = `userData=${encodeURIComponent(JSON.stringify(userData))}; path=/;`;
         router.push('./../home')
-        toast.success("Login successfully")
+        toast.success("Registration successfully")
       } catch (error) {
-        console.error("Error during Google login:", error);
+        console.error("Error during Google registration:", error);
         toast.error("Something went wrong, please try again.");
       }
     },
     onError: (error) => {
-      console.error("Google login failed:", error);
+      console.error("Google registration failed:", error);
       toast.error("Something went wrong, please try again.");
     },
   });
@@ -109,12 +111,12 @@ const LogIn = () => {
           </a>
           <div className="max-w-lg mt-16 max-lg:hidden">
             <h3 className="text-3xl font-extrabold text-white">
-              Welcome Back!
+              Create Your Account!
             </h3>
             <p className="text- mt-4 text-white">
-              Step into a world of possibilities as you log in to your account.
-              Reconnect with your journey, access tailored experiences, and
-              unlock endless opportunities designed just for you.
+              Embark on your journey by creating an account. Unlock personalized
+              experiences and access a world of opportunities tailored just for
+              you.
             </p>
           </div>
         </div>
@@ -122,7 +124,7 @@ const LogIn = () => {
         <div className="bg-white rounded-2xl md:mt-14 sm:px-6 px-4 py-8 max-w-md w-full h-max shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] max-lg:mx-auto">
           <form onSubmit={handleSubmit}>
             <div className="mb-8">
-              <h3 className="text-3xl font-extrabold text-primary">Login</h3>
+              <h3 className="text-3xl font-extrabold text-primary">Sign Up</h3>
             </div>
             <div className="sm:flex sm:items-start space-x-4 max-sm:space-y-4 mb-8">
               <button
@@ -138,15 +140,32 @@ const LogIn = () => {
             </div>
 
             <div>
+              <label className="text-gray-800 text-sm mb-2 block">Name</label>
+              <div className="relative flex items-center">
+                <input
+                  name="name"
+                  type="text"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-md outline-primary"
+                  placeholder="Enter your name"
+                />
+                <span className="absolute right-4 text-red-500 text-xs">
+                  {errors.name}
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-4">
               <label className="text-gray-800 text-sm mb-2 block">Email</label>
               <div className="relative flex items-center">
                 <input
                   name="email"
-                  type="text"
+                  type="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   className="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-md outline-primary"
-                  placeholder="Enter email"
+                  placeholder="Enter your email"
                 />
                 <span className="absolute right-4 text-red-500 text-xs">
                   {errors.email}
@@ -173,13 +192,23 @@ const LogIn = () => {
               </div>
             </div>
 
-            <div className="mt-4 text-right">
-              <a
-                href="#"
-                className="text-primary text-sm font-medium hover:underline"
-              >
-                Forgot Password?
-              </a>
+            <div className="mt-4">
+              <label className="text-gray-800 text-sm mb-2 block">
+                Confirm Password
+              </label>
+              <div className="relative flex items-center">
+                <input
+                  name="confirmPassword"
+                  type="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleInputChange}
+                  className="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-md outline-primary"
+                  placeholder="Enter Confirm Password"
+                />
+                <span className="absolute right-4 text-red-500 text-xs">
+                  {errors.confirmPassword}
+                </span>
+              </div>
             </div>
 
             <div className="mt-8">
@@ -187,19 +216,16 @@ const LogIn = () => {
                 type="submit"
                 className="w-full shadow-xl py-3 bg-primary text-white font-semibold rounded-md hover:bg-primary/80 focus:outline-none"
               >
-                Login
+                Sign Up
               </button>
             </div>
 
             <div className="mt-4 text-center">
               <p className="text-sm text-gray-800">
-                Don't have an account?{" "}
-                <button
-                  className="text-primary hover:underline"
-                  onClick={() => { router.push('./register')}}
-                >
-                  Sign Up
-                </button>
+                Already have an account?{" "}
+                <a href="/auth/login" className="text-primary hover:underline">
+                  Login
+                </a>
               </p>
             </div>
           </form>
@@ -209,4 +235,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default SignUp;

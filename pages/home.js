@@ -1,14 +1,23 @@
-import styles from './../styles/home.module.css';
+import HeroSection from "@/src/components/home/HeroSection";
+import Navbar from "@/src/components/Navbar";
 import { useRouter } from "next/router";
+import AboutProduct from "@/src/components/home/AboutProduct";
+import WhyChooseUs from "@/src/components/home/WhyChooseUs";
+import BetterValue from "@/src/components/home/BetterValue";
+import Features from "@/src/components/home/Features";
+
 const Home = () => {
-    const router = useRouter();
-    return (
-        <div className={styles.container}>
-            <h1 className={styles.heading}>Welcome to the Home Page</h1>
-            <button onClick={() => router.push('./contact')}>Contact</button>
-            <button onClick={() => router.push('./about')}>About</button>
-        </div>
-    );
+  const router = useRouter();
+  return (
+    <div className="">
+      <Navbar />
+      <HeroSection />
+      <AboutProduct />
+      <WhyChooseUs />
+      <BetterValue/>
+      <Features/>
+    </div>
+  );
 };
 
 export default Home;
