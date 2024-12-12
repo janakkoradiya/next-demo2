@@ -13,6 +13,7 @@ const LogIn = () => {
   const axiosCreate = useAxios();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
+  const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = useState(false)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,10 +35,12 @@ const LogIn = () => {
   };
 
   const handleSubmit = async (e) => {
+    setIsSubmitBtnDisabled(true)
     e.preventDefault();
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      setIsSubmitBtnDisabled(false)
     } else {
       console.log("Form Data:", formData);
       try {
@@ -50,11 +53,13 @@ const LogIn = () => {
             access_token: res?.data?.tokens?.access,
           }
           document.cookie = `userData=${encodeURIComponent(JSON.stringify(userData))}; path=/;`;
+          setFormData({ email: "", password: "" });
           router.push('./../home')
           setFormData({ email: "", password: "" });
           toast.success("Login successfully")
         }
       } catch (error) {
+        setIsSubmitBtnDisabled(false)
         console.error("Error message:", error.message);
         toast.error("Something went wrong, please try again.");
       }
@@ -175,7 +180,7 @@ const LogIn = () => {
 
             <div className="mt-4 text-right">
               <a
-                href="#"
+                href="/auth/reset-password"
                 className="text-primary text-sm font-medium hover:underline"
               >
                 Forgot Password?
@@ -186,6 +191,7 @@ const LogIn = () => {
               <button
                 type="submit"
                 className="w-full shadow-xl py-3 bg-primary text-white font-semibold rounded-md hover:bg-primary/80 focus:outline-none"
+                disabled={isSubmitBtnDisabled}
               >
                 Login
               </button>

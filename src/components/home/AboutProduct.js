@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
 import AboutProductCard from "@/src/components/home/AboutProductCard";
 import CircleAnimation from "@/src/components/home/CircleAnimation";
@@ -109,43 +109,88 @@ const OverlayCopy = ({ subheading, subheading2, heading }) => {
     </motion.div>
   );
 };
-const ExampleContent = () => (
+const ExampleContent = () => {
+  const cardContainerRef = useRef(null);
+  const isInView = useInView(cardContainerRef, { once: true, amount: 0.2 });
+  
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    })
+  };
+
+  const textContainerRef = useRef(null);
+  const textInView = useInView(textContainerRef, { once: true, amount: 0.2 });
+
+  return (
   <>
-    <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-2 md:px-10 lg:px-16 pb-20 mt-10">
-      <AboutProductCard
-        title="Engage Visitors Effortlessly"
-        description="Replace static interactions with real-time conversations, allowing users to ask questions, explore offerings, and connect instantly for a personalized experience."
-      />
-
-      <AboutProductCard
-        title="Build a Community Connection"
-        description="Go beyond just your website! Share your chatbot with your community, allowing anyone to reach out, interact, and provide you with valuable leads & insights.
-"
-      />
-
-      <AboutProductCard
-        title="Lead Generation Made Simple"
-        description="Our bots can capture user contact information by asking the right questions, ensuring you never miss an opportunity to grow your business."
-      />
-
-      <AboutProductCard
-        title="Track Performance with Dashboard"
-        description="Get full visibility into chatbot interactions with an easy-to-use dashboard. Analyze conversations, track inquiries, & gather leads to optimize your strategy.
-"
-      />
-    </div>
+    <motion.div 
+      ref={cardContainerRef}
+      className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-2 md:px-10 lg:px-16 pb-20 mt-10"
+    >
+      {[
+        {
+          title: "Engage Visitors Effortlessly",
+          description: "Replace static interactions with real-time conversations, allowing users to ask questions, explore offerings, and connect instantly for a personalized experience."
+        },
+        {
+          title: "Build a Community Connection",
+          description: "Go beyond just your website! Share your chatbot with your community, allowing anyone to reach out, interact, and provide you with valuable leads & insights."
+        },
+        {
+          title: "Lead Generation Made Simple",
+          description: "Our bots can capture user contact information by asking the right questions, ensuring you never miss an opportunity to grow your business."
+        },
+        {
+          title: "Track Performance with Dashboard",
+          description: "Get full visibility into chatbot interactions with an easy-to-use dashboard. Analyze conversations, track inquiries, & gather leads to optimize your strategy."
+        }
+      ].map((card, i) => (
+        <motion.div
+          key={i}
+          custom={i}
+          variants={cardVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <AboutProductCard
+            title={card.title}
+            description={card.description}
+          />
+        </motion.div>
+      ))}
+    </motion.div>
 
     {/* ===== text  */}
-    <div className="pb-10 flex justify-between flex-wrap items-center px-2 md:px-20">
+    <motion.div 
+      ref={textContainerRef}
+      className="pb-10 flex justify-between flex-wrap items-center px-2 md:px-20"
+      initial={{ opacity: 0, y: 50 }}
+      animate={textInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="w-[25%] sm:w-[30%]">
         <CircleAnimation />
       </div>
-      <div className="w-[75%] sm:w-[65%] text-lg md:text-[27px] md:leading-9 font-extrabold md:pr-20">
-        Whether you’re an individual looking to build{" "}
+      <motion.div 
+        className="w-[75%] sm:w-[65%] text-lg md:text-[27px] md:leading-9 font-extrabold md:pr-20"
+        initial={{ opacity: 0, x: -50 }}
+        animate={textInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+        transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+      >
+        Whether you're an individual looking to build{" "}
         <span className="">stronger relationships with your audience</span> or a
         company aiming to generate leads and boost engagement, our chatbot
         solution is your ultimate tool for success.
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   </>
-);
+  );
+};

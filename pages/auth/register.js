@@ -17,6 +17,7 @@ const SignUp = () => {
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const [isSubmitBtnDisabled, setIsSubmitBtnDisabled] = useState(false)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -48,8 +49,10 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitBtnDisabled(true)
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length > 0) {
+      setIsSubmitBtnDisabled(false)
       setErrors(validationErrors);
     } else {
       console.log("Form Data:", formData);
@@ -62,9 +65,11 @@ const SignUp = () => {
         }
         const res = await axiosCreate.post(SIGNUP_API, data);
         console.log("res ---- " + JSON.stringify(res))
+        setFormData({ name: "", email: "", password: "" })
         router.push('./login')
         toast.success("Registration successfully")
       } catch (error) {
+        setIsSubmitBtnDisabled(false)
         console.error("Error during Registration: ", error);
         toast.error("Something went wrong, please try again.")
       }
@@ -223,6 +228,7 @@ const SignUp = () => {
               <button
                 type="submit"
                 className="w-full shadow-xl py-3 bg-primary text-white font-semibold rounded-md hover:bg-primary/80 focus:outline-none"
+                disabled={isSubmitBtnDisabled}
               >
                 Sign Up
               </button>

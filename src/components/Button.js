@@ -3,60 +3,66 @@ import React from "react";
 import styled from "styled-components";
 
 // Button component accepting dynamic props including onClick
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, backgroundColor = "#6A42C2", hoverColor = "white" }) => {
   return (
-    <StyledWrapper backgroundcolor="#6A42C2" hovercolor="white">
-      <button onClick={onClick}>
-        <span>{text || "Button"}</span>
-      </button>
-    </StyledWrapper>
+    <StyledButton 
+      onClick={onClick}
+      backgroundColor={backgroundColor}
+      hoverColor={hoverColor}
+      className="styled-button" // Add a class for styling persistence
+    >
+      <span>{text || "Button"}</span>
+    </StyledButton>
   );
 };
 
-const StyledWrapper = styled.div`
-  button {
-    outline: none;
-    cursor: pointer;
-    border: none;
-    padding: 0.9rem 1.7rem;
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    position: relative;
-    display: inline-block;
-    font-weight: 500;
-    font-size: 16px;
-    border-radius: 500px;
-    overflow: hidden;
-    background: ${(props) => props.backgroundcolor || "#6A42C2"}; /* Fallback */
-    color: ghostwhite;
-  }
+// Move styles to a global styled component to persist across refreshes
+const StyledButton = styled.button.attrs(() => ({
+  className: 'styled-button' // Match the class name
+}))`
+  && {
+    outline: none !important;
+    cursor: pointer !important;
+    border: none !important;
+    padding: 0.9rem 1.7rem !important;
+    margin: 0 !important;
+    font-family: inherit !important;
+    position: relative !important;
+    display: inline-block !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    border-radius: 500px !important;
+    overflow: hidden !important;
+    background: ${props => props.backgroundColor} !important;
+    color: ghostwhite !important;
+    transition: all 0.4s ease !important;
 
-  button span {
-    position: relative;
-    z-index: 10;
-    transition: color 0.4s;
-  }
+    span {
+      position: relative !important;
+      z-index: 1 !important;
+      transition: color 0.4s !important;
+    }
 
-  button:hover span {
-    color: ${(props) => props.hovercolor || "white"}; /* Fallback */
-  }
+    &:hover span {
+      color: ${props => props.hoverColor} !important;
+    }
 
-  button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -2%;
-    width: 120%;
-    height: 100%;
-    background: #000;
-    z-index: 0;
-    transform: skew(30deg);
-    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
-  }
+    &::before {
+      content: "" !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: -20px !important;
+      width: 120% !important;
+      height: 100% !important;
+      background: #000 !important;
+      z-index: 0 !important;
+      transform: translateX(-100%) skew(30deg) !important;
+      transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1) !important;
+    }
 
-  button:hover::before {
-    transform: translate3d(100%, 0, 0);
+    &:hover::before {
+      transform: translateX(0) skew(30deg) !important;
+    }
   }
 `;
 

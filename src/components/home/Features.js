@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Features = () => {
   const features = [
@@ -40,26 +41,46 @@ const Features = () => {
     <div>
       <div className="container mx-auto px-3 sm:px-10 lg:px-20 py-12 md:pb-28">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {features.map((feature) => (
-            <div
+          {features.map((feature, index) => (
+            <motion.div
               key={feature.id}
-              className="bg-white rounded-lg transition-shadow duration-300 group "
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-lg transition-shadow duration-300 group"
             >
               <div className="flex justify-center mb-4 overflow-hidden rounded-lg">
-                <img
+                <motion.img
                   src={feature.image}
                   alt={feature.title}
                   className="w-full h-[150px] object-cover border transform transition-transform duration-300 group-hover:scale-105 group-hover:opacity-80"
+                  initial={{ scale: 1.2 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 />
               </div>
-              <h3 className="text-md font-semibold text-black/90 mb-2 text-start">
+              <motion.h3 
+                className="text-md font-semibold text-black/90 mb-2 text-start"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
                 {feature.title}
-              </h3>
+              </motion.h3>
               <div className="w-full h-[0.5px] bg-black/10 mb-2"></div>
-              <p className="text-black/70 text-sm text-start">
+              <motion.p 
+                className="text-black/70 text-sm text-start"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.3 }}
+              >
                 {feature.description}
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           ))}
         </div>
       </div>
