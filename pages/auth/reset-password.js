@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const ResetPassword = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -101,9 +103,11 @@ const ResetPassword = () => {
           <div className="mt-4 text-center">
             <p className="text-sm text-gray-800">
               Remember your password?{" "}
-              <a href="/auth/login" className="text-primary hover:underline">
+              <button
+              className="text-primary hover:underline"
+              onClick={() => { router.push('./login')}}>
                 Login
-              </a>
+              </button>
             </p>
           </div>
         </form>

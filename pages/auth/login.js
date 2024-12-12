@@ -179,12 +179,12 @@ const LogIn = () => {
             </div>
 
             <div className="mt-4 text-right">
-              <a
-                href="/auth/reset-password"
+              <button
                 className="text-primary text-sm font-medium hover:underline"
+                onClick={() => { router.push('./reset-password')}}
               >
                 Forgot Password?
-              </a>
+              </button>
             </div>
 
             <div className="mt-8">
