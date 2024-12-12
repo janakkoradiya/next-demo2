@@ -13,14 +13,22 @@ import {
 } from "react-icons/fa";
 import { RiMenu2Fill } from "react-icons/ri";
 import { IoMdShareAlt } from "react-icons/io";
+import { useRouter } from "next/router";
+import { toast } from "react-hot-toast";
 
 const Sidebar = ({ isOpen, onClose }) => {
+  const router = useRouter();
   const menuItems = [
     { icon: <FaEdit />, label: "Edit Profile", href: "/edit-profile" },
     { icon: <FaTachometerAlt />, label: "Dashboard", href: "/dashboard" },
     { icon: <FaChartLine />, label: "Usage", href: "/usage" },
     { icon: <FaCog />, label: "Settings", href: "/settings" },
   ];
+
+  const handleLogout = () => {
+    toast.success("Logout successfully")
+    router.push('./home')
+  }
 
   return (
     <div
@@ -45,7 +53,8 @@ const Sidebar = ({ isOpen, onClose }) => {
           </nav>
         </div>
 
-        <button className="flex items-center space-x-3 p-3 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+        <button className="flex items-center space-x-3 p-3 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+        onClick={handleLogout}>
           <FaSignOutAlt />
           <span>Logout</span>
         </button>

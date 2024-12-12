@@ -1,5 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 @import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light:regular);
+@import url(https://fonts.googleapis.com/css?family=Caveat:regular,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Geologica:100,200,300,regular,500,600,700,800,900);
 
 @tailwind base;
 @tailwind components;
@@ -20,10 +22,10 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Montserrat", Helvetica, sans-serif;
+  font-family: "Geologica", Helvetica, sans-serif;
 }
 
 /* font  */
-.shadowsintolight {
-  font-family: "Shadows Into Light";
+.caveat {
+  font-family: "Caveat";
 }

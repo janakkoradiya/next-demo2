@@ -3,16 +3,19 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
+import { useRouter } from "next/router";
+
 
 const Navbar = () => {
+  const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { href: "/home", label: "Home" },
-    { href: "/templates", label: "Templates" },
-    { href: "/data", label: "Data" },
-    { href: "/pricing", label: "Pricing" },
-    { href: "/about", label: "About Us" },
+    { href: "./../../../home", label: "Home" },
+    { href: "./../../../templates", label: "Templates" },
+    { href: "./../../../pricing", label: "Pricing" },
+    { href: "./../../../contact", label: "Contact" },
+    { href: "./../../../profile", label: "Profile" },
   ];
 
   const mobileMenuVariants = {
@@ -51,10 +54,10 @@ const Navbar = () => {
     <div className="relative">
       {/* Desktop Navbar */}
       <nav className="bg-white border border-primary/10 rounded-full w-[98%] sm:w-[90%] flex justify-between items-center p-4 px-4 shadow-lg shadow-primary/10 fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-        <Link href="/" className="font-bold text-xl pl-2">
+        <button onClick={() => router.push("./../../../home")} className="font-bold text-xl pl-2">
           {" "}
           LOGO
-        </Link>
+        </button>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center space-x-7">
@@ -63,18 +66,18 @@ const Navbar = () => {
               key={link.href}
               className="hover:text-purple-800 border-b border-white hover:border-b hover:border-primary"
             >
-              <Link href={link.href}>{link.label}</Link>
+              <button onClick={() => router.push(link.href)}>{link.label}</button>
             </li>
           ))}
         </ul>
 
         <div className="hidden md:block">
-          <Link
-            href="/auth/login"
+          <button
+            onClick={() => { router.push('./../../../auth/login')}}
             className="bg-primary font-medium hover:bg-primary/90 text-white px-6 py-3 rounded-full text-sm"
           >
             Login
-          </Link>
+          </button>
         </div>
 
         {/* Mobile Menu Toggle */}

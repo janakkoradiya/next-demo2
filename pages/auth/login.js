@@ -4,7 +4,7 @@ import { LOGIN_API } from "@/src/api/authAPI";
 import useAxios from "@/src/network/useAxios";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { useGoogleLogin } from "@react-oauth/google";
 import { useRouter } from "next/router";
 
@@ -54,7 +54,7 @@ const LogIn = () => {
           }
           document.cookie = `userData=${encodeURIComponent(JSON.stringify(userData))}; path=/;`;
           setFormData({ email: "", password: "" });
-          router.push('./../home')
+          router.push('./../profile')
           setFormData({ email: "", password: "" });
           toast.success("Login successfully")
         }
@@ -92,7 +92,7 @@ const LogIn = () => {
           user_name: userInfo?.name
         }
         document.cookie = `userData=${encodeURIComponent(JSON.stringify(userData))}; path=/;`;
-        router.push('./../home')
+        router.push('./../profile')
         toast.success("Login successfully")
       } catch (error) {
         console.error("Error during Google login:", error);

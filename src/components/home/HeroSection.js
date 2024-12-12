@@ -102,7 +102,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="text-primary shadowsintolight"
+              className="text-primary caveat"
             >
               UI/UX
             </motion.span>{" "}
@@ -111,7 +111,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="text-primary shadowsintolight"
+              className="text-primary caveat"
             >
               CI/CX
             </motion.span>

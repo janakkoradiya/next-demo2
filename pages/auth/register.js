@@ -5,7 +5,7 @@ import useAxios from "@/src/network/useAxios";
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/router";
-import { toast } from 'react-toastify';
+import { toast } from "react-hot-toast";
 import { useGoogleLogin } from "@react-oauth/google";
 
 const SignUp = () => {
@@ -102,7 +102,7 @@ const SignUp = () => {
           user_name: userInfo?.name
         }
         document.cookie = `userData=${encodeURIComponent(JSON.stringify(userData))}; path=/;`;
-        router.push('./../home')
+        router.push('./../profile')
         toast.success("Registration successfully")
       } catch (error) {
         console.error("Error during Google registration:", error);
