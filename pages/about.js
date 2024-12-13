@@ -1,14 +1,21 @@
-import styles from './../styles/about.module.css';
-import { useRouter } from "next/router";
-const About = () => {
-    const router = useRouter();
-    return (
-        <div className={styles.container}>
-            <h1 className={styles.heading}>About Us</h1>
-            <button onClick={() => router.push('./contact')}>Contact</button>
-            <button onClick={() => router.push('./home')}>Home</button>
-        </div>
-    );
-};
+import Navbar from "@/src/components/Navbar";
+import Footer from "@/src/components/Footer";
 
-export default About;
+const About = () => {
+  return (
+    <div>
+      <Navbar />
+      <div className="min-h-screen mt-20 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col">
+        {/* Contact Form Component */}
+        <section className="flex justify-center py-12 px-6">
+          <div className="w-full max-w-2xl bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-6">About</h2>
+          </div>
+        </section>
+      </div>
+      <Footer />
+    </div>
+  )
+}
+
+export default About

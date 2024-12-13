@@ -1,7 +1,7 @@
 import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
 
-const Pricing = () => {
+const Features = () => {
   return (
     <div>
       <Navbar />
@@ -9,7 +9,7 @@ const Pricing = () => {
         {/* Contact Form Component */}
         <section className="flex justify-center py-12 px-6">
           <div className="w-full max-w-2xl bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-6">Pricing</h2>
+            <h2 className="text-2xl font-bold mb-6">Features</h2>
           </div>
         </section>
       </div>
@@ -18,4 +18,4 @@ const Pricing = () => {
   )
 }
 
-export default Pricing
+export default Features

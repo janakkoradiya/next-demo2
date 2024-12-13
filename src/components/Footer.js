@@ -2,8 +2,10 @@ import React from "react";
 import { BsTwitter, BsLinkedin } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Footer = () => {
+  const router = useRouter();
   return (
     <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 sm:max-w-full py-14">
@@ -16,24 +18,24 @@ const Footer = () => {
               cutting-edge chatbot platform.
             </p>
             <div className="flex space-x-4 items-center">
-              <Link
+              <button
                 href="https://github.com"
                 className="text-gray-400 hover:text-primary transition-colors"
               >
                 <MdEmail className="w-6 h-6 scale-105" />
-              </Link>
-              <Link
+              </button>
+              <button
                 href="https://twitter.com"
                 className="text-gray-400 hover:text-primary transition-colors"
               >
                 <BsTwitter className="w-5 h-5" />
-              </Link>
-              <Link
+              </button>
+              <button
                 href="https://linkedin.com"
                 className="text-gray-400 hover:text-primary transition-colors"
               >
                 <BsLinkedin className="w-5 h-5" />
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -41,36 +43,36 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/"
+                <button
+                  onClick={() => router.push('./../../../home')}
                   className="text-gray-400 hover:underline transition-colors"
                 >
                   Home
-                </Link>
+                </button>
               </li>
               <li>
-                <Link
-                  href="/about"
+                <button
+                  onClick={() => router.push('./../../../about')}
                   className="text-gray-400 hover:underline transition-colors"
                 >
                   About
-                </Link>
+                </button>
               </li>
               <li>
-                <Link
-                  href="/features"
+                <button
+                  onClick={() => router.push('./../../../features')}
                   className="text-gray-400 hover:underline transition-colors"
                 >
                   Features
-                </Link>
+                </button>
               </li>
               <li>
-                <Link
-                  href="/pricing"
+                <button
+                  onClick={() => router.push('./../../../pricing')}
                   className="text-gray-400 hover:underline transition-colors"
                 >
                   Pricing
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
