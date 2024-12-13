@@ -18,24 +18,30 @@ const Footer = () => {
               cutting-edge chatbot platform.
             </p>
             <div className="flex space-x-4 items-center">
-              <button
+              <Link
                 href="https://github.com"
                 className="text-gray-400 hover:text-primary transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <MdEmail className="w-6 h-6 scale-105" />
-              </button>
-              <button
+              </Link>
+              <Link
                 href="https://twitter.com"
                 className="text-gray-400 hover:text-primary transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <BsTwitter className="w-5 h-5" />
-              </button>
-              <button
+              </Link>
+              <Link
                 href="https://linkedin.com"
                 className="text-gray-400 hover:text-primary transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <BsLinkedin className="w-5 h-5" />
-              </button>
+              </Link>
             </div>
           </div>
 

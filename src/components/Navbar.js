@@ -46,8 +46,9 @@ const Navbar = () => {
     },
   };
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = (route) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    router.push(route)
   };
 
   return (
@@ -110,13 +111,12 @@ const Navbar = () => {
                   variants={linkVariants}
                   style={{ transitionDelay: `${index * 0.1}s` }}
                 >
-                  <Link
-                    href={link.href}
-                    className="block py-2 text-lg hover:text-purple-800 border-b border-gray-200"
-                    onClick={toggleMobileMenu}
+                  <p
+                    className="block py-2 text-lg hover:text-purple-800 border-b border-gray-200 cursor-pointer"
+                    onClick={() => {toggleMobileMenu(link.href)}}
                   >
                     {link.label}
-                  </Link>
+                  </p>
                 </motion.div>
               ))}
 
@@ -126,13 +126,12 @@ const Navbar = () => {
                 variants={linkVariants}
                 style={{ transitionDelay: `${navLinks.length * 0.1}s` }}
               >
-                <Link
-                  href="/auth/login"
+                <button
                   className="block w-full text-center bg-primary text-white py-2 rounded-full hover:bg-primary/90"
-                  onClick={toggleMobileMenu}
+                  onClick={() => {toggleMobileMenu('./../../auth/login')}}
                 >
                   Login
-                </Link>
+                </button>
               </motion.div>
             </div>
           </motion.div>
