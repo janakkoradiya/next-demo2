@@ -7,7 +7,8 @@ import BetterValue from "@/src/components/home/BetterValue";
 import Features from "@/src/components/home/Features";
 import FoldEffect from "@/src/components/home/FoldEffect";
 import Footer from "@/src/components/Footer";
-import FAQs from "@/src/components/home/FAQs";
+import FAQs1 from "@/src/components/home/FAQs1";
+import WhyChooseUs2 from "@/src/components/home/WhyChooseUs2";
 
 const Home = () => {
   const router = useRouter();
@@ -16,11 +17,12 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <AboutProduct />
-      <WhyChooseUs />
+      {/* <WhyChooseUs /> */}
       <FoldEffect />
       <BetterValue />
       <Features />
-      <FAQs />
+      <WhyChooseUs2/>
+      <FAQs1 />
       <div className="mt-0">
         <Footer />
       </div>

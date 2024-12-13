@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { PiAndroidLogoThin } from "react-icons/pi";
+import { PiAndroidLogoFill } from "react-icons/pi";
 
 const Features = () => {
   const features = [
@@ -9,7 +11,7 @@ const Features = () => {
         "https://plus.unsplash.com/premium_photo-1677094310918-cc302203b21c?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Easy Chatbot Creation",
       description:
-        "Build your own chatbot effortlessly in just a few simple steps, no technical expertise needed.",
+        "Build your own chatbot effortlessly in just a few simple steps no technical expertise needed.",
     },
     {
       id: 2,
@@ -39,8 +41,15 @@ const Features = () => {
 
   return (
     <div>
-      <div className="container mx-auto px-3 sm:px-10 lg:px-20 py-12 md:pb-28">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="gap-x-5 mx-auto px-3 sm:px-10 lg:px-20 py-10 md:py-20 my-10 md:pb-28">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl text-primary">
+          Product Highlights
+        </h1>
+        <p className="text-lg my-2 md:my-5 mb-8 text-black/80 w-full md:w-[40%]">
+          Built to Solve Problems in a Way No One Else Does, With Innovative{" "}
+          Solutions Tailored to Your Unique Needs
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.id}
@@ -48,21 +57,15 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-lg transition-shadow duration-300 group"
+              className="bg-secondary/30 border-primary/50 hover:bg-secondary/60 transition-all rounded-3xl p-8 ease-in-out duration-300 group"
             >
-              <div className="flex justify-center mb-4 overflow-hidden rounded-lg">
-                <motion.img
-                  src={feature.image}
-                  alt={feature.title}
-                  className="w-full h-[150px] object-cover border transform transition-transform duration-300 group-hover:scale-105 group-hover:opacity-80"
-                  initial={{ scale: 1.2 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                />
-              </div>
-              <motion.h3 
-                className="text-md font-semibold text-black/90 mb-2 text-start"
+              <motion.div className="mb-7">
+                {/* Change icon on hover */}
+                <PiAndroidLogoThin className="text-4xl md:text-5xl group-hover:hidden transition-all duration-200 ease-in-out" />
+                <PiAndroidLogoFill className="text-4xl md:text-5xl group-hover:block hidden text-primary transition-all duration-200 ease-in-out" />
+              </motion.div>
+              <motion.h3
+                className="text-2xl md:text-3xl font- text-black/90 mb-4 text-start group-hover:text-primary transition-all duration-200 ease-in-out"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -70,9 +73,8 @@ const Features = () => {
               >
                 {feature.title}
               </motion.h3>
-              <div className="w-full h-[0.5px] bg-black/10 mb-2"></div>
-              <motion.p 
-                className="text-black/70 text-sm text-start"
+              <motion.p
+                className="text-black/70 text-lg text-start"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}

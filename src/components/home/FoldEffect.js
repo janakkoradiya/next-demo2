@@ -9,17 +9,22 @@ const FoldEffect = () => {
   ];
 
   return (
-    <div className="w-full -mt-5 py-12 md:py-24 px-4 md:px-8 flex flex-col items-center justify-center space-y-2 bg-white">
+    <div className="w-full -mt-10 py-12 md:py-24 overflow-x-hidden flex flex-col items-center justify-center space-y-2 bg-white">
       {words.map((word, index) => (
         <div
           key={word}
           className="relative shadow-2xl shadow-primary/10 border-primary/10 overflow-hidden py-4 md:py-8 w-full"
-          style={{ transform: `rotate(${index === 0 ? 1 : -1.4}deg)` }}
+          style={{ transform: `rotate(${index === 0 ? 1.2 : -1.2}deg)` }}
         >
+          <div
+            className={`absolute inset-0 ${
+              index === 0 ? "bg-secondary" : "bg-primary"
+            }`}
+          ></div>
           <motion.div
-            className={`whitespace-nowrap ${
-              index === 0 ? "text-black" : "text-primary/60"
-            } text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold`}
+            className={`relative z-10 text-${
+              index === 0 ? "primary" : "secondary"
+            } text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium whitespace-nowrap`}
             initial={{ x: 0 }}
             animate={{
               x: index === 0 ? [0, -2000] : [-2000, 0],
@@ -32,16 +37,6 @@ const FoldEffect = () => {
             }}
             style={{ willChange: "transform" }}
           >
-            {`${word}. `.repeat(15)}
-            <span
-              className={`${
-                index === 0
-                  ? "text-primary font-extrabold"
-                  : "text-black font-extrabold"
-              }`}
-            >
-              {`${word}. `}
-            </span>
             {`${word}. `.repeat(15)}
           </motion.div>
         </div>

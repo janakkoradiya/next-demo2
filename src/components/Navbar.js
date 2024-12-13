@@ -1,14 +1,16 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useRouter } from "next/router";
 
+import { TbMessageChatbotFilled } from "react-icons/tb";
 
 const Navbar = () => {
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navLinks = [
     { href: "./../../../home", label: "Home" },
@@ -51,21 +53,38 @@ const Navbar = () => {
     router.push(route)
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20 * window.innerHeight / 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="relative">
       {/* Desktop Navbar */}
-      <nav className="bg-white border border-primary/10 rounded-full w-[98%] sm:w-[90%] flex justify-between items-center p-4 px-4 shadow-lg shadow-primary/10 fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-        <button onClick={() => router.push("./../../../home")} className="font-bold text-xl pl-2">
+      <nav className={`bg-${isScrolled ? 'white' : 'secondary/0'} border-primary/10 w-full flex justify-between items-center p-4 px-6 py-6 shadow-primary/10 fixed top-0 left-1/2 transform -translate-x-1/2 z-[10000]`}>
+        <Link href="/" className="font-bold text-xl pl-2 flex items-center">
           {" "}
-          LOGO
-        </button>
+          <TbMessageChatbotFilled className="text-[28px] mr-2 mt-[2px]" />{" "}
+          <span className="text-[24px] font-extrabold">ChatBot</span>
+        </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center space-x-7">
+        <ul className="hidden md:flex items-center space-x-10">
           {navLinks.map((link) => (
             <li
               key={link.href}
-              className="hover:text-purple-800 border-b border-white hover:border-b hover:border-primary"
+              className="hover:text-primary text-black/90 text-[18px] font-medium border-b border-transparent hover:border-b hover:border-primary"
             >
               <button onClick={() => router.push(link.href)}>{link.label}</button>
             </li>
@@ -119,7 +138,6 @@ const Navbar = () => {
                   </p>
                 </motion.div>
               ))}
-
               <motion.div
                 initial="hidden"
                 animate="visible"

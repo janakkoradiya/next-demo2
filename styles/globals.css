@@ -1,7 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Manrope:200,300,regular,500,600,700,800);
 @import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light:regular);
-@import url(https://fonts.googleapis.com/css?family=Caveat:regular,500,600,700);
-@import url(https://fonts.googleapis.com/css?family=Geologica:100,200,300,regular,500,600,700,800,900);
+/* @import url(https://fonts.googleapis.com/css?family=Caveat:regular,500,600,700); */
 
 @tailwind base;
 @tailwind components;
@@ -12,20 +11,29 @@
   --foreground: #171717;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+::selection {
+  background-color: #d9e0a4;
+  color: #19485f;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #19485f;
+  color: red;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #d9e0a4;
+}
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Geologica", Helvetica, sans-serif;
+  font-family: "Manrope", Helvetica, sans-serif;
 }
 
 /* font  */
 .caveat {
-  font-family: "Caveat";
+  font-family: "Shadows Into Light";
 }

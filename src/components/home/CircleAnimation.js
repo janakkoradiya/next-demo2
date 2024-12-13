@@ -1,5 +1,7 @@
 import React from "react";
-import { IoIosArrowRoundForward } from "react-icons/io";
+import { PiArrowCircleUpRightThin } from "react-icons/pi";
+import { VscRobot } from "react-icons/vsc";
+import { RiRobot3Fill } from "react-icons/ri";
 
 const RotatingCircleText = () => {
   return (
@@ -24,8 +26,8 @@ const RotatingCircleText = () => {
             <text
               className="font-extrabold"
               style={{
-                fontSize: "17px",
-                fill: "#6A42C2",
+                fontSize: "16px",
+                fill: "#19485f",
               }}
             >
               <textPath xlinkHref="#circlePath">
@@ -37,7 +39,7 @@ const RotatingCircleText = () => {
 
         {/* Centered Icon */}
         <div className="absolute inset-0 flex items-center justify-center group">
-          <IoIosArrowRoundForward className="text-[2rem] md:text-[5rem] text-primary/70 group-hover:scale-125 transition-all ease-in-out duration-300 hover:text-[2.5rem] md:hover:text-[5.6rem] group-hover:text-primary/80" />
+          <PiArrowCircleUpRightThin className="text-[3rem] md:text-[5rem] text-primary/80 transition-all ease-in-out duration-300 " />
         </div>
       </div>
     </div>

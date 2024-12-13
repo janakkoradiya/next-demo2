@@ -7,12 +7,12 @@ import { useRouter } from "next/router";
 const Footer = () => {
   const router = useRouter();
   return (
-    <footer className="bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 sm:max-w-full py-14">
+    <footer className="bg-primary text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 sm:max-w-full pt-20 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <h2 className=" text-2xl font-bold text-primary mb-4">ChatBot</h2>
-            <p className="text-gray-400 mb-6 w-full lg:w-[96%]">
+            <h2 className=" text-2xl font-bold text-secondary mb-4">ChatBot</h2>
+            <p className="text-white/70 font-normal mb-6 w-full lg:w-[96%]">
               Empowering businesses with intelligent conversational AI
               solutions. Transform your customer experience with our
               cutting-edge chatbot platform.
@@ -20,7 +20,7 @@ const Footer = () => {
             <div className="flex space-x-4 items-center">
               <Link
                 href="https://github.com"
-                className="text-gray-400 hover:text-primary transition-colors"
+                className="text-white/70 font-normal hover:text-primary transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -28,7 +28,7 @@ const Footer = () => {
               </Link>
               <Link
                 href="https://twitter.com"
-                className="text-gray-400 hover:text-primary transition-colors"
+                className="text-white/70 font-normal hover:text-primary transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -36,7 +36,7 @@ const Footer = () => {
               </Link>
               <Link
                 href="https://linkedin.com"
-                className="text-gray-400 hover:text-primary transition-colors"
+                className="text-white/70 font-normal hover:text-primary transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -51,7 +51,7 @@ const Footer = () => {
               <li>
                 <button
                   onClick={() => router.push('./../../../home')}
-                  className="text-gray-400 hover:underline transition-colors"
+                  className="text-white/70 font-normal hover:underline transition-colors"
                 >
                   Home
                 </button>
@@ -59,7 +59,7 @@ const Footer = () => {
               <li>
                 <button
                   onClick={() => router.push('./../../../about')}
-                  className="text-gray-400 hover:underline transition-colors"
+                  className="text-white/70 font-normal hover:underline transition-colors"
                 >
                   About
                 </button>
@@ -67,7 +67,7 @@ const Footer = () => {
               <li>
                 <button
                   onClick={() => router.push('./../../../features')}
-                  className="text-gray-400 hover:underline transition-colors"
+                  className="text-white/70 font-normal hover:underline transition-colors"
                 >
                   Features
                 </button>
@@ -75,7 +75,7 @@ const Footer = () => {
               <li>
                 <button
                   onClick={() => router.push('./../../../pricing')}
-                  className="text-gray-400 hover:underline transition-colors"
+                  className="text-white/70 font-normal hover:underline transition-colors"
                 >
                   Pricing
                 </button>
@@ -85,7 +85,7 @@ const Footer = () => {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <ul className="space-y-2 text-gray-400">
+            <ul className="space-y-2 text-white/70 font-normal">
               <li>123 AI Street</li>
               <li>Tech Valley, CA 94025</li>
               <li>contact@chatbot.com</li>
@@ -94,8 +94,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8">
-          <p className="text-center text-gray-400">
+        <div className="border-t border-white/30 mt-12 pt-8">
+          <p className="text-center text-white/70 font-normal">
             © {new Date().getFullYear()} ChatBot. All rights reserved.
           </p>
         </div>
