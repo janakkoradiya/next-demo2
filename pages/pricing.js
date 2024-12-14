@@ -1,21 +1,22 @@
-import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
+import FAQsLightMode from "@/src/components/home/FAQs1";
+import Navbar from "@/src/components/Navbar";
+import PriceCards from "@/src/components/pricing/PriceCards";
+import PriceTable from "@/src/components/pricing/PriceTable";
+import PricingHero from "@/src/components/pricing/PricingHero";
+import React from "react";
 
-const Pricing = () => {
+const pricing = () => {
   return (
     <div>
       <Navbar />
-      <div className="min-h-screen mt-20 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col">
-        {/* Contact Form Component */}
-        <section className="flex justify-center py-12 px-6">
-          <div className="w-full max-w-2xl bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-6">Pricing</h2>
-          </div>
-        </section>
-      </div>
+      <PricingHero />
+      <PriceCards/>
+      <PriceTable/>
+      <FAQsLightMode />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Pricing
+export default pricing;

@@ -167,7 +167,7 @@ const FAQsLightMode = () => {
             </h2>
             <div className="flex flex-col md:items-start">
               <button
-                onClick={() => router.push("/about")}
+                onClick={() => router.push("/contact")}
                 className="text-[20px] text-primary flex space-x-1 group transition-all ease-in-out duration-200 font-medium items-center pb-1 border-b w-fit border-primary mt-5 md:mt-6"
               >
                 <span>Contact Us</span>{" "}
