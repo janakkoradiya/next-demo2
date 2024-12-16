@@ -34,14 +34,14 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('')] before:bg-no-repeat before:bg-bottom before:bg-cover before:size-full before:-z-[1] before:transform before:-translate-x-1/2 min-h-[80vh]">
+    <div className="relative overflow-hidden before:absolute before:top-0 before:start-1/2  before:bg-no-repeat before:bg-bottom before:bg-cover before:size-full before:-z-[1] before:transform before:-translate-x-1/2 min-h-[80vh]">
       {/* <!-- Gradients --> */}
       <div
         aria-hidden="true"
         className="flex absolute -top-96 start-1/2 transform -translate-x-1/2"
       >
         {/* <div className="bg-gradient-to-r from-[#D9E0A4] via-[#D9E0A4] to-[#D9E0A4] blur-3xl w-[25rem] h-[44rem] rotate-[-0deg] transform -translate-x-[10rem]"></div> */}
-        <div className="bg-gradient-to-b from-[#d9e0a4de] via-[#d9e0a4e0] to-[#d9e0a4b8] blur-[70px] w-[135rem] h-[36rem] rounded-fulls origin-top-left -rotate- -translate-x-[0rem] -ml-4"></div>
+        <div className="bg-gradient-to-b from-[#d9e0a4de] via-[#d9e0a4d4] to-[#d9e0a475] blur-[70px] w-[135rem] h-[36rem] rounded-fulls origin-top-left -rotate- -translate-x-[0rem] -ml-4"></div>
       </div>
       {/* Glowing and Spreading Gradient Circle */}
       {/* <div className="absolute inset-0 mt-5 flex items-center justify-center">
@@ -85,7 +85,7 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Buttons */}
-        <div className="mt-12 flex flex-col sm:flex-row justify-center items-center">
+        <div className="mt-12 flex flex-col gap-y-3 md:gap-0 sm:flex-row justify-center items-center">
           <button
             onClick={() => router.push("/profile")}
             className="inline-flex z-[1000] justify-center items-center text-center bg-secondary text-primary text-[17px] font-medium rounded-full py-4 px-8 sm:ml-4 hover:bg-secondary/90 transition"

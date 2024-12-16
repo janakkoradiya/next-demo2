@@ -6,18 +6,20 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { useRouter } from "next/router";
 
 import { TbMessageChatbotFilled } from "react-icons/tb";
+import { FaCircleUser } from "react-icons/fa6";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const pathname = usePathname();
 
   const navLinks = [
-    { href: "./../../../home", label: "Home" },
-    { href: "./../../../templates", label: "Templates" },
-    { href: "./../../../pricing", label: "Pricing" },
-    { href: "./../../../contact", label: "Contact" },
-    { href: "./../../../profile", label: "Profile" },
+    { href: "/home", label: "Home" },
+    { href: "/pricing", label: "Pricing" },
+    { href: "/contact", label: "Contact" },
   ];
 
   const mobileMenuVariants = {
@@ -55,24 +57,48 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20 * window.innerHeight / 100) {
-        setIsScrolled(true);
+      // Only apply scroll effect on home page
+      if (pathname === "/home" || pathname === "/") {
+        if (window.scrollY > (20 * window.innerHeight) / 100) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
       } else {
-        setIsScrolled(false);
+        // Force white background for other routes
+        setIsScrolled(true);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+
+    // Initial check
+    handleScroll();
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
+  }, [pathname]);
+
+  // TODO: Replace this with actual authentication logic
+  useEffect(() => {
+    // Example: Check for authentication token or user session
+    const token = localStorage.getItem("authToken");
+    setIsLoggedIn(!!token);
   }, []);
 
   return (
     <div className="relative">
       {/* Desktop Navbar */}
-      <nav className={`bg-${isScrolled ? 'white' : 'secondary/0'} border-primary/10 w-full flex justify-between items-center p-4 px-6 py-6 shadow-primary/10 fixed top-0 left-1/2 transform -translate-x-1/2 z-[10000]`}>
+      <nav
+        className={`${
+          isScrolled
+            ? "bg-white"
+            : pathname === "/home" || pathname === "/"
+            ? "bg-secondary/0"
+            : "bg-white"
+        } border-primary/10 w-full flex justify-between items-center p-4 px-6 py-6 shadow-primary/10 fixed top-0 left-1/2 transform -translate-x-1/2 z-[10000]`}
+      >
         <Link href="/" className="font-bold text-xl pl-2 flex items-center">
           {" "}
           <TbMessageChatbotFilled className="text-[28px] mr-2 mt-[2px]" />{" "}
@@ -91,13 +117,24 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="hidden md:block">
-          <button
-            onClick={() => { router.push('./../../../auth/login')}}
-            className="bg-primary font-medium hover:bg-primary/90 text-white px-6 py-3 rounded-full text-sm"
-          >
-            Login
-          </button>
+        <div className="hidden md:flex items-center space-x-4">
+          {isLoggedIn ? (
+            <Link
+              href="/profile"
+              className="hover:bg-gray-100 p-2 rounded-full"
+            >
+              <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+                <FaCircleUser className="w-6 h-6 text-gray-600" />
+              </div>
+            </Link>
+          ) : (
+            <Link
+              href="/auth/login"
+              className="bg-primary font-medium hover:bg-primary/90 text-white px-6 py-3 rounded-full text-sm"
+            >
+              Login
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -138,19 +175,38 @@ const Navbar = () => {
                   </p>
                 </motion.div>
               ))}
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={linkVariants}
-                style={{ transitionDelay: `${navLinks.length * 0.1}s` }}
-              >
-                <button
-                  className="block w-full text-center bg-primary text-white py-2 rounded-full hover:bg-primary/90"
-                  onClick={() => {toggleMobileMenu('./../../auth/login')}}
+              {isLoggedIn ? (
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={linkVariants}
+                  style={{ transitionDelay: `${navLinks.length * 0.1}s` }}
                 >
-                  Login
-                </button>
-              </motion.div>
+                  <Link
+                    href="/profile"
+                    className="block w-full text-center flex items-center justify-center space-x-2 bg-gray-100 text-black py-2 rounded-full hover:bg-gray-200"
+                    onClick={toggleMobileMenu}
+                  >
+                    <FaCircleUser className="w-5 h-5" />
+                    <span>Profile</span>
+                  </Link>
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={linkVariants}
+                  style={{ transitionDelay: `${navLinks.length * 0.1}s` }}
+                >
+                  <Link
+                    href="/auth/login"
+                    className="block w-full text-center bg-primary text-white py-2 rounded-full hover:bg-primary/90"
+                    onClick={toggleMobileMenu}
+                  >
+                    Login
+                  </Link>
+                </motion.div>
+              )}
             </div>
           </motion.div>
         )}

@@ -146,7 +146,7 @@ const FAQsLightMode = () => {
 
   return (
     <div className="px-4 sm:px-10 mb-20">
-      <div className="py-10 bg-secondary md:py-20 flex items-center justify-center px-10 md:px-20 rounded-[4rem]">
+      <div className="py-10 bg-secondary md:py-24 flex items-center justify-center px-10 md:px-20 rounded-[4rem]">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
           {/* Left Section with animation triggered on scroll into view */}
           <motion.div
@@ -178,7 +178,7 @@ const FAQsLightMode = () => {
 
           {/* Right Section - FAQ with staggered animation triggered on scroll into view */}
           <motion.div
-            className="mt-4"
+            className="mt-4 md:mt-0"
             initial="hidden"
             whileInView="visible"
             variants={{
@@ -196,15 +196,15 @@ const FAQsLightMode = () => {
               >
                 {/* Question */}
                 <motion.button
-                  className={`w-full text-left flex justify-between items-center py-4 ${
+                  className={`w-full text-left flex justify-between items-center py-4 group group-hover:text-primary ${
                     openIndex === index ? "text-primary" : "text-black"
                   }`}
                   onClick={() => toggleFaq(index)}
                 >
-                  <span className="text-black/90 font-medium text-base md:text-2xl">
+                  <span className="text-black/90 group-hover:text-primary font-medium text-base md:text-[20px]">
                     {faq.question}
                   </span>
-                  <motion.span className="transform origin-center text-sm md:text-base">
+                  <motion.span className="transform origin-center text-sm md:text-base group-hover:text-primary">
                     {openIndex === index ? <FaChevronUp /> : <FaChevronDown />}
                   </motion.span>
                 </motion.button>
@@ -217,7 +217,7 @@ const FAQsLightMode = () => {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="text-black/70 mt-2 text-sm md:text-xl"
+                      className="text-black/70 mt-2 text-sm md:text-lg"
                     >
                       <p>{faq.answer}</p>
                       <hr className="border-t border-gray-300 mt-4" />

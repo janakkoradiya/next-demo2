@@ -37,3 +37,15 @@ body {
 .caveat {
   font-family: "Shadows Into Light";
 }
+
+
+/* hide scrollbar  */
+* Hide scrollbar but allow scrolling for all browsers */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* For Internet Explorer */
+  scrollbar-width: none; /* For Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
