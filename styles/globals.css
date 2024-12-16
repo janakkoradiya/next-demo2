@@ -40,7 +40,7 @@ body {
 
 
 /* hide scrollbar  */
-* Hide scrollbar but allow scrolling for all browsers */
+/* Hide scrollbar but allow scrolling for all browsers */
 .hide-scrollbar {
   -ms-overflow-style: none; /* For Internet Explorer */
   scrollbar-width: none; /* For Firefox */
