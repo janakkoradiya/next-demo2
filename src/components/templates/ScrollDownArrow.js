@@ -28,10 +28,10 @@ const ScrollDownArrow = () => {
           initial="hidden"
           animate="visible"
         >
-          <div className="absolute top-0 left-0 w-1/2 h-full bg-primary/70 transform skew-y-[30deg]"></div>
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/70 transform skew-y-[-30deg]"></div>
-          <div className="absolute top-0 left-0 w-1/2 h-full bg-primary/70 transform skew-y-[30deg]"></div>
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/70 transform skew-y-[-30deg]"></div>
+          <div className="absolute top-0 left-0 w-1/2 h-full bg-black/50 transform skew-y-[30deg]"></div>
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-black/50 transform skew-y-[-30deg]"></div>
+          <div className="absolute top-0 left-0 w-1/2 h-full bg-black/50 transform skew-y-[30deg]"></div>
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-black/50 transform skew-y-[-30deg]"></div>
         </motion.div>
       ))}
     </div>

@@ -1,15 +1,32 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaUserCircle, FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
+import {
+  FaUserCircle,
+  FaGithub,
+  FaTwitter,
+  FaLinkedin,
+  FaClipboard,
+  FaShareAlt,
+} from "react-icons/fa";
 import { RiRobot3Fill } from "react-icons/ri";
+import { MdContentCopy, MdCheck, MdOutlineAttachFile } from "react-icons/md";
+import { HiOutlineShare } from "react-icons/hi2";
+import { MdOutlineAddPhotoAlternate } from "react-icons/md";
+import { IoAttach } from "react-icons/io5";
+import { LuCircleCheckBig } from "react-icons/lu";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const ChatApp = () => {
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Welcome! How can I assist you today?" },
+    {
+      sender: "bot",
+      text: "Welcome to our chatbot! I'm here to assist you with any questions, tasks, or information you need. Whether you're looking for advice, exploring options, or just curious, feel free to ask—I'm ready to help! How can I assist you today?",
+    },
   ]);
   const [input, setInput] = useState("");
+  const [copiedMessageIndex, setCopiedMessageIndex] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const chatEndRef = useRef(null);
 
-  // Auto-scroll to the latest message
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -22,7 +39,6 @@ const ChatApp = () => {
       ]);
       setInput("");
 
-      // Mock bot reply
       setTimeout(() => {
         setMessages((prevMessages) => [
           ...prevMessages,
@@ -38,93 +54,176 @@ const ChatApp = () => {
     }
   };
 
+  const handleCopy = (text, index) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        setCopiedMessageIndex(index);
+        setTimeout(() => setCopiedMessageIndex(null), 2000);
+      })
+      .catch((err) => console.error("Failed to copy text:", err));
+  };
+
+  const handleShare = (text) => {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "ChatBot Message",
+          text: text,
+          url: window.location.href,
+        })
+        .catch((error) => console.error("Error sharing:", error));
+    } else {
+      alert("Sharing is not supported on this device.");
+    }
+  };
+
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { sender: "user", text: `📎 File attached: ${file.name}` },
+      ]);
+    }
+  };
+
+  const handleImageUpload = (e) => {
+    const image = e.target.files[0];
+    if (image) {
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { sender: "user", text: `🖼️ Image uploaded: ${image.name}` },
+      ]);
+    }
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-white gradient-to-br from-primary/20 to-secondary/20">
       {/* Sidebar */}
-      <aside className="w-1/4 bg-white shadow-lg p-4 hidden md:block py-5">
+      <aside
+        className={`fixed top-0 left-0 z-50 h-full w-[80%] md:w-[22%] bg-gray-100 gradient-to-br from-primary/10 to-secondary/20 p-4 py-5 pt-10 transition-transform transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0`}
+      >
+        <button
+          className="absolute top-4 right-4 text-black/90 md:hidden"
+          onClick={toggleSidebar}
+        >
+          <AiOutlineClose size={22} />
+        </button>
         <div className="text-center">
           <img
             src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202310/chandler-bing-023401675-16x9_0.jpg?VersionId=AWOx3Tr1LfXJ7QYkmNdGeMkd54BKhs65&size=690:388"
             alt="Profile"
             className="w-24 h-24 mx-auto rounded-full object-cover"
           />
-          <h2 className="mt-4 text-lg font-bold">Chandler</h2>
-          <p className="text-gray-600">Chatbot Creator</p>
-          <div className="flex justify-center mt-4 space-x-4">
-            <a
-              href="#"
-              className="text-black hover:text-black/90 transition-all duration-200 ease-in-out"
-            >
-              <FaGithub size={24} />
-            </a>
-            <a
-              href="#"
-              className="text-black hover:text-black/90 transition-all duration-200 ease-in-out"
-            >
-              <FaTwitter size={24} />
-            </a>
-            <a
-              href="#"
-              className="text-black hover:text-black/90 transition-all duration-200 ease-in-out"
-            >
-              <FaLinkedin size={24} />
-            </a>
-          </div>
-          <p className="mt-4 text-sm text-gray-500">
+          <h2 className="mt-4 text-lg font-bold text-black/90">Chandler</h2>
+          <p className="mt-4 text-sm text-black/60">
             This chatbot is designed to assist with your queries and provide
             information.
           </p>
         </div>
       </aside>
 
-      {/* Chat Window */}
-      <div className="w-full flex flex-col flex-1 h-full">
-        <div className="flex-1 overflow-y-auto p-4 w-full mb-3">
+      {/* Chat window */}
+      <div className="w-full flex flex-col flex-1 h-full md:ml-[21%] px-2 md:px-20 lg:px-[15%]">
+        <header className="p-4 border-b border-gray-200 flex items-center md:hidden">
+          <button className="text-black" onClick={toggleSidebar}>
+            <AiOutlineMenu size={24} />
+          </button>
+          <h1 className="text-lg font-bold ml-4">ChatBot</h1>
+        </header>
+        <div className="flex-1 overflow-y-auto p-4 w-full mb-3 hide-scrollbar">
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`mb-3 w-full flex ${
-                message.sender === "user" ? "justify-end" : "justify-start"
+              className={`relative mb-3 w-full flex items-start ${
+                message.sender === "user" ? "justify-start" : "justify-start"
               }`}
             >
               {message.sender === "bot" && (
-                <p className="w-7 h-7 bg-primary flex justify-center items-center rounded-full mt-1.5 mr-2">
-                  <RiRobot3Fill className="text-lg text-white" />
-                </p>
+                <div className="w-9 h-9 bg-white/30 flex justify-center items-center border mt-[20px] rounded-full">
+                  <img
+                    src="https://cdn3d.iconscout.com/3d/premium/thumb/robot-3d-illustration-download-in-png-blend-fbx-gltf-file-formats--metaverse-support-communication-pack-people-illustrations-4357100.png"
+                    alt=""
+                  />
+                </div>
+              )}
+              {message.sender === "user" && (
+                <div className="w-9 h-9 flex justify-center items-center border mt-[65px] rounded-full mr-3">
+                  <img
+                    className="w-full h-full object-cover rounded-full border"
+                    src="https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
+                    alt=""
+                  />
+                </div>
               )}
               <div
-                className={`max-w-2xl px-4 py-2 text-[15px] rounded-lg break-words overflow-wrap-anywhere ${
+                className={` font-medium text-[15.5px] rounded-t-3xl rounded-br-3xl leading-7 break-words overflow-wrap-anywhere ${
                   message.sender === "user"
-                    ? "bg-black/10 text-right text-black"
-                    : "bg-primary text-white"
+                    ? "w-fit bg-gradient-to-br from-primary/5 to-secondary/20 black/5 text-black/80 px-4 py-3 mt-[61px]"
+                    : "w-full text-black/80 px-4 py-1 mt-4"
                 }`}
               >
                 {message.text}
               </div>
-              {message.sender === "user" && (
-                <FaUserCircle className="w-7 h-7 text-gray-500 ml-2 mt-1.5" />
+              {message.sender === "bot" && (
+                <div className="absolute left-12 bottom-[-18px] flex items-center text-[13px] space-x-[9px] text-black/80">
+                  <HiOutlineShare
+                    className="cursor-pointer hover:text-black scale-[0.9]"
+                    onClick={() => handleShare(message.text)}
+                  />
+                  <div className="relative">
+                    {copiedMessageIndex === index ? (
+                      <LuCircleCheckBig className="text-black/90" />
+                    ) : (
+                      <MdContentCopy
+                        className="cursor-pointer hover:text-black"
+                        onClick={() => handleCopy(message.text, index)}
+                      />
+                    )}
+                  </div>
+                </div>
               )}
             </div>
           ))}
           <div ref={chatEndRef}></div>
         </div>
-
-        {/* Input Box */}
-        <div className="bg-white p-4 border-t flex items-center">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyPress}
-            placeholder="Type a message..."
-            className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-none"
-          />
-          <button
-            onClick={handleSendMessage}
-            className="ml-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-none"
-          >
-            Send
-          </button>
+        <div className="bg-transparent p-4 flex items-center">
+          <div className="flex items-center w-full px-4 border-2 py-3 border-black/5 rounded-full">
+            <label htmlFor="file-upload">
+              <IoAttach className="text-[22px] mt-[1px] cursor-pointer mr-2 scale-x-110 text-gray-600 hover:text-gray-800" />
+              <input
+                type="file"
+                id="file-upload"
+                onChange={handleFileUpload}
+                className="hidden"
+              />
+            </label>
+            <label htmlFor="image-upload">
+              <MdOutlineAddPhotoAlternate className="text-xl cursor-pointer mr-4 text-gray-600 hover:text-gray-800" />
+              <input
+                type="file"
+                id="image-upload"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
+            </label>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyPress}
+              placeholder="Type a message..."
+              className="flex-1 bg-transparent outline-none placeholder:text-black/30"
+            />
+          </div>
         </div>
       </div>
     </div>

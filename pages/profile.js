@@ -32,7 +32,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className={`fixed inset-y-0 left-0 w-64 bg-white shadow-xl transform ${
+      className={`fixed inset-y-0 left-0 w-64 bg-primary/10  transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } md:translate-x-0 transition-transform duration-300 ease-in-out z-30`}
     >
@@ -114,7 +114,7 @@ const Profile = () => {
           transition={{ duration: 0.5 }}
           className="max-w-full mx-auto"
         >
-          <div className="bg-white md:rounded-2xl shadow-sm overflow-hidden">
+          <div className="bg-secondary/30 md:rounded-3xl overflow-hidden">
             {/* Profile Header */}
             <div className="relative h-32 bg-primary">
               <motion.button
@@ -132,10 +132,10 @@ const Profile = () => {
                 <img
                   src={user.avatar}
                   alt={user.name}
-                  className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-white shadow-lg -mt-12 sm:-mt-16"
+                  className="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-white/50 shadow-lg -mt-12 sm:-mt-16"
                 />
 
-                <h1 className="mt-4 text-xl sm:text-2xl font-bold text-gray-900 text-center">
+                <h1 className="mt-4 text-xl sm:text-2xl font-bold text-black/90 text-center">
                   {user.name}
                 </h1>
                 <p className="text-gray-600 font-medium text-center text-sm sm:text-base">
@@ -155,9 +155,9 @@ const Profile = () => {
                   ].map((stat, index) => (
                     <div
                       key={index}
-                      className="text-center p-2 rounded-lg bg-gray-50"
+                      className="text-center p-5 rounded-lg bg-secondary/50"
                     >
-                      <p className="text-lg sm:text-xl font-bold text-primary">
+                      <p className="text-lg sm:text-2xl font-bold text-primary">
                         {stat.value}
                       </p>
                       <p className="text-xs sm:text-sm text-gray-600">
@@ -189,7 +189,7 @@ const Profile = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 text-gray-400 hover:text-primary text-lg sm:text-xl transition-colors"
+                      className="p-2 text-primary/60 hover:text-primary text-lg sm:text-xl transition-colors"
                     >
                       {social.icon}
                     </motion.a>
