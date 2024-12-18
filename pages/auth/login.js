@@ -109,7 +109,7 @@ const LogIn = () => {
     <div className="px-0 md:px-20">
       <div className="grid lg:grid-cols-2 gap-4 max-lg:gap-12 bg-gradient-to-r rounded-b-[5rem] from-primary to-primary px-6 md:px-12 py-12 h-[360px]">
         <div>
-          <a href="/home" className="text-3xl font-extrabold text-white/70">
+          <a href="/" className="text-3xl font-extrabold text-white/70">
             LOGO
           </a>
           <div className="max-w-lg mt-16 max-lg:hidden">

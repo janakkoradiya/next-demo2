@@ -27,7 +27,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
   const handleLogout = () => {
     toast.success("Logout successfully")
-    router.push('./home')
+    router.push('./')
   }
 
   return (

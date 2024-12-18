@@ -50,7 +50,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <button
-                  onClick={() => router.push('./../../../home')}
+                  onClick={() => router.push('./../../../')}
                   className="text-white/70 font-normal hover:underline transition-colors"
                 >
                   Home
