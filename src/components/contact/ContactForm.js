@@ -35,19 +35,19 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="py-10 mb-20 px-4 md:px-10 lg:px-24">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
+    <div className="py-10 my-28 mt- px-4 md:px-10 lg:px-24">
+      <div className="flex flex-col justify-between items-start md:items-center gap-10">
         {/* Left Section */}
-        <div className="w-full md:w-[45%]">
-          <h2 className="text-3xl md:text-[44px] font-medium text-primary">
+        <div className="w-full md:w-[45%] mb-10">
+          <h2 className="text-3xl md:text-[44px] text-center font-medium text-primary">
             Get In Touch With Us
           </h2>
-          <p className="text-lg mt-5">
+          <p className="text-lg mt-5 text-center">
             If you have any questions about our product, please contact us &
             we'll schedule a call soon!
           </p>
           {/* Social Media Icons */}
-          <div className="flex items-center mt-7">
+          <div className="flex items-center justify-center mt-7 mx-auto">
             {socialMediaLinks.map((link, index) => (
               <a
                 key={index}
@@ -64,11 +64,11 @@ const ContactForm = () => {
 
         {/* Right Section */}
         <div className="w-full md:w-[50%]">
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-md font-medium text-black/60"
               >
                 Name
               </label>
@@ -77,13 +77,13 @@ const ContactForm = () => {
                 type="text"
                 name="name"
                 id="name"
-                className="mt-1 block w-full pl-3 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                className="mt-1 block w-full pl-3 pr-3 py-3 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-primary focus:border-primary placeholder:text-black/30 sm:text-sm"
               />
             </div>
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-md font-medium text-black/60"
               >
                 Email
               </label>
@@ -92,13 +92,13 @@ const ContactForm = () => {
                 type="email"
                 name="email"
                 id="email"
-                className="mt-1 block w-full pl-3 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                className="mt-1 block w-full pl-3 pr-3 py-3 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-primary focus:border-primary placeholder:text-black/30 sm:text-sm"
               />
             </div>
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-md font-medium text-black/60"
               >
                 Message
               </label>
@@ -106,7 +106,7 @@ const ContactForm = () => {
                 id="message"
                 name="message"
                 rows="5"
-                className="mt-1 block w-full pl-3 pr-3 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                className="mt-1 block w-full pl-3 pr-3 py-3 border border-gray-200 rounded-xl shadow-sm focus:outline-none focus:ring-primary focus:border-primary placeholder:text-black/30 sm:text-sm"
                 placeholder="Your message..."
               ></textarea>
             </div>

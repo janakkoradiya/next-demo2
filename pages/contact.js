@@ -9,9 +9,9 @@ export default function ContactPage() {
   return (
     <div>
       <Navbar />
-      <AboutUs/>
-      <ContactForm/>
-      <ReadyToStart/>
+
+      <ContactForm />
+
       <Footer />
     </div>
   );

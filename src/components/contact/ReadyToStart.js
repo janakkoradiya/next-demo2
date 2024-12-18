@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 const ReadyToStart = () => {
   const router = useRouter();
   return (
-    <div className="py-10 px-4 md:px-10 lg:px-20 -mb-10">
+    <div className="py-10 px-4 md:px-10 lg:px-20 -mb-10 mt-10">
       <div className="w-full flex flex-col text-center justify-center items-center bg-primary/10 p-16 md:p-32 rounded-t-[3rem]">
         <h1
           className="text-4xl md:text-5xl text-primary mb-5 font- w-full md:w-[60%] mx-auto "

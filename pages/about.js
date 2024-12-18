@@ -1,21 +1,18 @@
-import Navbar from "@/src/components/Navbar";
+import React from "react";
 import Footer from "@/src/components/Footer";
+import Navbar from "@/src/components/Navbar";
+import AboutUs from "@/src/components/contact/AboutUs";
+import ReadyToStart from "@/src/components/contact/ReadyToStart";
 
-const About = () => {
+const about = () => {
   return (
     <div>
       <Navbar />
-      <div className="min-h-screen mt-20 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col">
-        {/* Contact Form Component */}
-        <section className="flex justify-center py-12 px-6">
-          <div className="w-full max-w-2xl bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-6">About</h2>
-          </div>
-        </section>
-      </div>
+      <AboutUs />
+      <ReadyToStart />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default about;

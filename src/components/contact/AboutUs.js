@@ -5,7 +5,7 @@ import { GoArrowUpRight } from "react-icons/go";
 const AboutUs = () => {
   return (
     <div className="py-20 mt-10">
-      <div className="py-10 md:py-16 px-10 md:px-16 bg-secondary/20 border-primary w-[95%] mx-auto rounded-[3rem] flex flex-wrap justify-between space-x-3 items-center">
+      <div className="py-10 md:py-14 px-10 md:px-16 bg-secondary/20 border-primary w-[95%] mx-auto rounded-[3rem] flex flex-wrap justify-between space-x-3 items-center">
         <div className="relative h-[470px] w-full md:w-[27%] rounded-3xl overflow-hidden">
           {/* Overlay */}
           <div className="absolute inset-0 bg-primary bg-opacity-80 rounded-3xl"></div>

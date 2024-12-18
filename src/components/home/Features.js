@@ -53,23 +53,22 @@ const Features = () => {
           {features.map((feature, index) => (
             <motion.div
               key={feature.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-secondary/30 border-primary/50 hover:bg-secondary/60 transition-all rounded-3xl p-8 ease-in-out duration-300 group"
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+              className="bg-secondary/30 border-primary/50 hover:bg-secondary/60 transition-all rounded-3xl p-8 group"
             >
-              <motion.div className="mb-7">
-                {/* Change icon on hover */}
-                <PiAndroidLogoThin className="text-4xl md:text-5xl group-hover:hidden transition-all duration-200 ease-in-out" />
-                <PiAndroidLogoFill className="text-4xl md:text-5xl group-hover:block hidden text-primary transition-all duration-200 ease-in-out" />
-              </motion.div>
+              <div className="mb-7 relative flex items-center">
+                <PiAndroidLogoThin className="text-4xl md:text-5xl absolute group-hover:opacity-0 transition-opacity duration-200 ease-in-out" />
+                <PiAndroidLogoFill className="text-4xl md:text-5xl text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out" />
+              </div>
               <motion.h3
                 className="text-2xl md:text-3xl font- text-black/90 mb-4 text-start group-hover:text-primary transition-all duration-200 ease-in-out"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                transition={{ duration: 0.4, delay: index * 0.2 }}
               >
                 {feature.title}
               </motion.h3>
@@ -78,7 +77,7 @@ const Features = () => {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.3 }}
+                transition={{ duration: 0.4, delay: index * 0.3 }}
               >
                 {feature.description}
               </motion.p>

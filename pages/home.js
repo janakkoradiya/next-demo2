@@ -9,6 +9,8 @@ import FoldEffect from "@/src/components/home/FoldEffect";
 import Footer from "@/src/components/Footer";
 import FAQs1 from "@/src/components/home/FAQs1";
 import WhyChooseUs2 from "@/src/components/home/WhyChooseUs2";
+import VideoSection from "@/src/components/home/VideoSection";
+import ChartVideoSec from "@/src/components/home/ChartVideoSec";
 
 const Home = () => {
   const router = useRouter();
@@ -16,12 +18,17 @@ const Home = () => {
     <div className="">
       <Navbar />
       <HeroSection />
+      <VideoSection />
+      <div className="hidden md:block">
+        <ChartVideoSec />
+      </div>
       <AboutProduct />
+
       {/* <WhyChooseUs /> */}
       <FoldEffect />
       <BetterValue />
       <Features />
-      <WhyChooseUs2/>
+      <WhyChooseUs2 />
       <FAQs1 />
       <div className="mt-0">
         <Footer />
