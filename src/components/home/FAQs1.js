@@ -115,24 +115,24 @@ import { GoArrowUpRight } from "react-icons/go";
 
 const faqs = [
   {
-    question: "What makes your chatbot platform unique?",
+    question: "Who can use this tool?",
     answer:
-      "Our platform stands out with its advanced AI capabilities, intuitive interface, and community-based features that help businesses create more engaging and personalized conversations with their users.",
+      "The tool is designed to be versatile and can be used by businesses of any size, from startups to large enterprises, as well as by individual users looking to create chatbots for personal or professional projects.",
   },
   {
-    question: "How easy is it to set up a chatbot?",
+    question: "Do I need coding knowledge?",
     answer:
-      "Setting up a chatbot is incredibly simple with our platform. Our user-friendly interface allows you to create and customize your chatbot in minutes, with no coding experience required.",
+      "No, you don’t need any coding experience. The tool is entirely no-code and built to be user-friendly for anyone, regardless of technical expertise.",
   },
   {
-    question: "What kind of support do you offer?",
+    question: "Are there pre-built templates?",
     answer:
-      "We provide 24/7 technical support, comprehensive documentation, video tutorials, and a dedicated customer success team to help you get the most out of our platform.",
+      "Yes, the tool includes a library of pre-designed templates to help you get started quickly. Alternatively, you can create a chatbot from scratch to suit your specific needs.",
   },
   {
-    question: "Can I customize the chatbot's appearance?",
+    question: "What are the pricing plans?",
     answer:
-      "Yes, absolutely! Our platform offers extensive customization options for your chatbot's appearance, including themes, colors, fonts, and custom CSS to match your brand identity perfectly.",
+      "We offer a flexible pay-as-you-go pricing model, ensuring you only pay for the features and usage that you need, making it cost-effective for all users.",
   },
 ];
 

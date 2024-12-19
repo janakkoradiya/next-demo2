@@ -23,7 +23,7 @@ const FoldEffect = () => {
           ></div>
           <motion.div
             className={`relative z-10 text-${
-              index === 0 ? "primary" : "secondary"
+              index === 0 ? "primary" : "white"
             } text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium whitespace-nowrap`}
             initial={{ x: 0 }}
             animate={{
