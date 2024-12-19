@@ -57,11 +57,11 @@ const Features = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="bg-secondary/30 border-primary/50 hover:bg-secondary/60 transition-all rounded-3xl p-8 group"
+              className="bg-secondary/30 border-primary/50 hover:bg-secondary/60 transition-all rounded-3xl p-8 py-14 group"
             >
               <div className="mb-7 relative flex items-center">
-                <PiAndroidLogoThin className="text-4xl md:text-5xl absolute group-hover:opacity-0 transition-opacity duration-200 ease-in-out" />
-                <PiAndroidLogoFill className="text-4xl md:text-5xl text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out" />
+                <PiAndroidLogoThin className="text-4xl md:text-5xl absolute text-black/90 transition-opacity group-hover:text-primary duration-200 ease-in-out mb-4 mt-4" />
+                {/* <PiAndroidLogoFill className="text-4xl md:text-5xl text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out" /> */}
               </div>
               <motion.h3
                 className="text-2xl md:text-3xl font- text-black/90 mb-4 text-start group-hover:text-primary transition-all duration-200 ease-in-out"

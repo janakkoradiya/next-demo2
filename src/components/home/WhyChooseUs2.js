@@ -1,6 +1,6 @@
 import React from "react";
-import { BiSolidRocket } from "react-icons/bi";
-import { TiGroup } from "react-icons/ti";
+import { GoRocket } from "react-icons/go";
+import { HiOutlineUserGroup } from "react-icons/hi2";
 
 const WhyChooseUs2 = () => {
   return (
@@ -8,11 +8,11 @@ const WhyChooseUs2 = () => {
       {/* sec 1 */}
       <div className="items-center grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-4 md:gap-y-0">
         <div className="flex flex-col space-y-6 py-5 md:py-8 h-full border-l-[3px] md:border-l-[6px] border-secondary pl-4  md:pl-8 rounded-2xl">
-          <BiSolidRocket className="text-2xl md:text-3xl text-primary" />
+          <GoRocket className="text-2xl md:text-3xl text-primary mb-3" />
           <h1 className="text-3xl md:text-4xl text-primary">
             Why Our Platform is Truly a Game Changer
           </h1>
-          <p className="text-lg md:text-xl">
+          <p className="text-lg md:text-[18px] mt-1">
             Our platform is not just another chatbot builder, it’s a
             game-changer. We are constantly innovating and introducing exciting
             features to keep you ahead of the curve. From enhanced
@@ -22,11 +22,11 @@ const WhyChooseUs2 = () => {
         </div>
 
         <div className="flex flex-col space-y-6 py-5 md:py-8 h-full border-l-[3px] md:border-l-[6px] border-secondary pl-4  md:pl-8 rounded-2xl">
-          <TiGroup className="text-2xl md:text-3xl text-primary" />
+          <HiOutlineUserGroup className="text-2xl md:text-3xl text-primary mb-3" />
           <h1 className="text-3xl md:text-4xl text-primary">
             Expand Your Reach with Community Features
           </h1>
-          <p className="text-lg md:text-xl">
+          <p className="text-lg md:text-[18px] mt-1">
             Our community-based functionality helps you connect with a larger
             audience, grow your network, generate more leads, and strengthen
             user relationships. With our advanced features, personalized

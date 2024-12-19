@@ -1,24 +1,24 @@
 import React from "react";
-import { AiFillInstagram } from "react-icons/ai";
-import { RiTwitterXLine } from "react-icons/ri";
-import { MdFacebook } from "react-icons/md";
-import { PiLinkedinLogoFill } from "react-icons/pi";
+import { RiFacebookCircleLine } from "react-icons/ri";
+import { RiTwitterXFill } from "react-icons/ri";
+import { FiLinkedin } from "react-icons/fi";
+import { RiInstagramLine } from "react-icons/ri";
 
 const socialMediaLinks = [
   {
-    icon: <MdFacebook />,
+    icon: <RiFacebookCircleLine />,
     href: "https://www.facebook.com/",
   },
   {
-    icon: <RiTwitterXLine />,
+    icon: <RiTwitterXFill />,
     href: "https://twitter.com/",
   },
   {
-    icon: <AiFillInstagram />,
+    icon: <RiInstagramLine />,
     href: "https://www.instagram.com/",
   },
   {
-    icon: <PiLinkedinLogoFill />,
+    icon: <FiLinkedin />,
     href: "https://www.linkedin.com/",
   },
 ];

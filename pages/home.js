@@ -19,11 +19,8 @@ const Home = () => {
       <Navbar />
       <HeroSection />
       <VideoSection />
-      <div className="hidden md:block">
-        <ChartVideoSec />
-      </div>
+      <ChartVideoSec />
       <AboutProduct />
-
       {/* <WhyChooseUs /> */}
       <FoldEffect />
       <BetterValue />

@@ -19,34 +19,25 @@ const AboutUs = () => {
         </div>
 
         <div className="w-full md:w-[65%]">
-          <h1 className="text-3xl font-medium md:text-5xl text-primary mb-7">
+          <h1 className="text-3xl font-medium md:text-5xl text-primary mb-8">
             Shaping the Future, Together
           </h1>
-          <p className="text-lg md:text-xl text-black/80">
-            Welcome to Company, where innovation meets excellence. Our story is
-            one of passion, creativity, and a relentless drive to solve
-            real-world challenges. We specialize in delivering tailored
-            solutions that empower businesses and individuals to achieve their
-            full potential. Founded with the belief that every idea deserves a
-            chance to shine, we bring a unique blend of expertise and commitment
-            to every project. Whether through cutting-edge technology,
-            personalized strategies, or dedicated support, we prioritize your
-            success at every step. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Quibusdam natus rerum unde enim dolorum
-            laudantium, ipsum non aspernatur obcaecati nihil quis, quaerat
-            corrupti asperiores commodi aliquid recusandae velit fuga corporis!
+          <p className="text-lg md:text-[19px] text-black/80">
+            Our story began just 5-6 months ago with two passionate individuals
+            and a shared dream to transform how businesses communicate. Starting
+            with just 2-3 projects, we successfully delivered outstanding
+            results, building a reputation for innovation and reliability along
+            the way. Today, our growing team of 6-7 talented professionals
+            continues to push boundaries and deliver exceptional solutions.
           </p>
 
-          <div className="flex flex-col md:items-start">
-            <Link
-              target="_blank"
-              href="https://www.byteupai.com/"
-              className="text-[19px] text-primary flex space-x-1 group transition-all ease-in-out duration-200 font-medium items-center pb-1 border-b w-fit border-primary mt-5 md:mt-9"
-            >
-              <span>Visit Our Website</span>{" "}
-              <GoArrowUpRight className="group-hover:ml-2.5 transition-all ease-in-out duration-300" />
-            </Link>
-          </div>
+          <p className="text-lg md:text-[19px] text-black/80 mt-5">
+            Currently, we are working on an exciting chatbot development tool
+            designed to revolutionize customer engagement. This tool embodies
+            our creativity, technical expertise, and commitment to empowering
+            businesses with smart, user-friendly solutions. Thank you for being
+            part of our journey the best is yet to come!
+          </p>
         </div>
       </div>
     </div>

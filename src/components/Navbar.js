@@ -100,10 +100,15 @@ const Navbar = () => {
             : "bg-white"
         } border-primary/10 w-full flex justify-between items-center p-4 px-6 py-6 shadow-primary/10 fixed top-0 left-1/2 transform -translate-x-1/2 z-[10000]`}
       >
-        <Link href="/" className="font-bold text-xl pl-2 flex items-center">
-          {" "}
-          <TbMessageChatbotFilled className="text-[28px] mr-2 mt-[2px]" />{" "}
-          <span className="text-[24px] font-extrabold">ChatBot</span>
+        <Link
+          href="/"
+          className="font-bold text-xl pl-2 flex h-10 scale-[1.1] md:scale-[1.4] items-center -ml-4 md:ml-3"
+        >
+          <img
+            src="/logolight.png"
+            className="w-full h-full object-cover"
+            alt=""
+          />
         </Link>
 
         {/* Desktop Menu */}
@@ -131,7 +136,7 @@ const Navbar = () => {
           ) : (
             <Link
               href="/auth/login"
-              className="bg-primary font-medium hover:bg-primary/90 text-white px-6 py-3 rounded-full text-sm"
+              className="bg-primary w-fit font-medium hover:bg-primary/90 text-white px-6 py-3 rounded-full text-sm"
             >
               Login
             </Link>
@@ -201,7 +206,7 @@ const Navbar = () => {
                 >
                   <Link
                     href="/auth/login"
-                    className="block w-full text-center bg-primary text-white py-2 rounded-full hover:bg-primary/90"
+                    className="block w-1/3 text-center bg-primary text-white py-2 rounded-full hover:bg-primary/90"
                     onClick={toggleMobileMenu}
                   >
                     Login
